@@ -1,0 +1,1 @@
+export default function ParticipantsLayout({children}:{children:React.ReactNode}){return <><div style={{position:'fixed',right:24,top:24,zIndex:10}}><a className="btn" href="/api/admin/export/participants">Выгрузить в Excel</a></div>{children}</>}

@@ -4,7 +4,7 @@ services:
     env_file: .env
     depends_on:
       postgres: { condition: service_healthy }
-    ports: ["3000:3000"]
+    ports: ["3500:3500"]
     volumes: ["speaker_uploads:/app/uploads"]
   postgres:
     image: postgres:16-alpine

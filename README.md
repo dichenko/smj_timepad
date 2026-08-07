@@ -25,7 +25,7 @@ npm run db:seed
 npm run dev
 ```
 
-Откройте `http://localhost:3000`, админка — `http://localhost:3000/admin/login`.
+Откройте `http://localhost:3500`, админка — `http://localhost:3500/admin/login`.
 
 ## Docker
 

@@ -1,4 +1,4 @@
 {$DOMAIN:localhost} {
-  reverse_proxy app:3000
+  reverse_proxy app:3500
   encode zstd gzip
 }

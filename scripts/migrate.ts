@@ -1,0 +1,1 @@
+import { migrate } from "drizzle-orm/node-postgres/migrator"; import { db,pool } from "../src/db"; async function main(){await migrate(db,{migrationsFolder:"drizzle"});await pool.end()} main().catch(e=>{console.error(e);process.exit(1)});

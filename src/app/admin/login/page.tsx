@@ -1,0 +1,1 @@
+export default function Login(){return <main className="wrap"><h1>Вход администратора</h1><form className="card" action="/api/admin/login" method="post"><label>Логин<input className="input" name="login" required/></label><label>Пароль<input className="input" name="password" type="password" required/></label><button className="btn">Войти</button></form></main>}

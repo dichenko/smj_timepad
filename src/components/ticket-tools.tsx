@@ -1,0 +1,1 @@
+"use client"; import { useEffect } from "react"; export default function TicketTools({link,token}:{link:string;token:string}){useEffect(()=>{fetch("/api/ticket/remember",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({token})})},[token]);return <button className="btn" onClick={()=>navigator.clipboard.writeText(link)}>Скопировать ссылку</button>}

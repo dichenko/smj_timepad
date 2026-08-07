@@ -10,3 +10,6 @@ CREATE TABLE IF NOT EXISTS idempotency_keys (id serial PRIMARY KEY,key varchar(1
 CREATE TABLE IF NOT EXISTS audit_logs (id serial PRIMARY KEY,admin_id integer REFERENCES admins(id),action varchar(100) NOT NULL,entity_type varchar(50) NOT NULL,entity_id varchar(100) NOT NULL,old_data jsonb,new_data jsonb,ip_address varchar(64),user_agent varchar(500),created_at timestamptz NOT NULL DEFAULT now());
 ALTER TABLE participants ADD COLUMN IF NOT EXISTS role varchar(30) NOT NULL DEFAULT 'GUEST';
 ALTER TABLE events ADD COLUMN IF NOT EXISTS allowed_roles varchar(30)[] NOT NULL DEFAULT ARRAY['COORDINATOR','ADMINISTRATOR','EMPLOYEE','GUEST','OTHER'];
+ALTER TABLE participants ADD COLUMN IF NOT EXISTS phone varchar(30) NOT NULL DEFAULT '';
+ALTER TABLE participants ADD COLUMN IF NOT EXISTS normalized_phone varchar(20) NOT NULL DEFAULT '';
+CREATE UNIQUE INDEX IF NOT EXISTS participants_conference_phone_unique ON participants(conference_id,normalized_phone) WHERE normalized_phone <> '';

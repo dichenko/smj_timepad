@@ -1,2 +1,3 @@
 import { NextResponse } from "next/server"; import { db } from "@/db"; import { participants } from "@/db/schema"; import { eq } from "drizzle-orm"; import { tokenHash } from "@/lib/tokens";
+export const dynamic = "force-dynamic";
 export async function POST(request:Request){const {token}=await request.json() as {token?:string};if(!token||!(await db.select({id:participants.id}).from(participants).where(eq(participants.ticketTokenHash,tokenHash(token))).limit(1))[0])return NextResponse.json({message:"Недействительная ссылка"},{status:404});const res=NextResponse.json({ok:true});res.cookies.set(process.env.PARTICIPANT_COOKIE_NAME??"conference_participant",token,{httpOnly:true,secure:process.env.NODE_ENV==="production",sameSite:"lax",path:"/",maxAge:15552000});return res}
